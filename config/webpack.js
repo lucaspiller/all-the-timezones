@@ -38,6 +38,8 @@ module.exports = {
       { test: /\.eot$/,    loader: "file-loader?prefix=font/" },
       { test: /\.svg$/,    loader: "file-loader?prefix=font/" },
 
+      { test: /\.json$/,   loader: "json-loader" },
+
       // Babel for React JSX and ES6 support
       { test: /\.js$/,     loader: "babel-loader", exclude: /node_modules/ },
       { test: /\.jsx$/,    loader: "babel-loader", exclude: /node_modules/ }

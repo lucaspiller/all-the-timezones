@@ -3,7 +3,7 @@
 import "babel/polyfill";
 
 import React from 'react';
-import Dice  from './components/dice';
+import Clock from './components/clock';
 
 Promise.all([
   new Promise((resolve) => {
@@ -14,7 +14,12 @@ Promise.all([
     }
   }),
   new Promise((resolve) => {
-    React.render(<Dice/>, document.body);
+    React.render(
+      <div>
+        <Clock />
+        <Clock timezone='Europe/London' />
+        <Clock timezone='America/Los_Angeles' />
+      </div>
+    , document.body);
   })
 ]);
-
