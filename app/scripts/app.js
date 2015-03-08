@@ -2,8 +2,8 @@
 
 import "babel/polyfill";
 
-import React from 'react';
-import Clock from './components/clock';
+import React        from 'react';
+import TimezonesApp from './components/timezones_app';
 
 Promise.all([
   new Promise((resolve) => {
@@ -14,12 +14,6 @@ Promise.all([
     }
   }),
   new Promise((resolve) => {
-    React.render(
-      <div>
-        <Clock />
-        <Clock timezone='Europe/London' />
-        <Clock timezone='America/Los_Angeles' />
-      </div>
-    , document.body);
+    React.render(<TimezonesApp />, document.body);
   })
 ]);
