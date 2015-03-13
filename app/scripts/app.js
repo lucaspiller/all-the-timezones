@@ -1,5 +1,7 @@
 'use strict';
 
+import "../stylesheets/style.scss";
+
 import "babel/polyfill";
 
 import React        from 'react';

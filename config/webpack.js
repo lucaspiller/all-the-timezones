@@ -1,6 +1,7 @@
-var path    = require("path");
-var webpack = require("webpack");
-var DEBUG   = true; // TODO
+var path              = require("path");
+var webpack           = require("webpack");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var DEBUG             = true; // TODO
 
 module.exports = {
   output: {
@@ -11,7 +12,7 @@ module.exports = {
 
   cache:   DEBUG,
   debug:   DEBUG,
-  devtool: DEBUG ? '#inline-source-map' : false,
+  devtool: DEBUG ? 'inline-source-map' : false,
 
   stats: {
     colors:  true,
@@ -22,10 +23,15 @@ module.exports = {
     app: ["./app/scripts/app.js"]
   },
 
+  plugins: [
+    // extract inline css into separate 'style.css'
+    new ExtractTextPlugin('style.css')
+  ],
+
   module: {
     loaders: [
-      // required to write "require('./style.css')"
-      { test: /\.css$/,    loader: "style-loader!css-loader" },
+      { test: /\.css$/,    loader: ExtractTextPlugin.extract('style-loader', 'css-loader')  },
+      { test: /\.scss$/,   loader: ExtractTextPlugin.extract('css?sourceMap!sass?sourceMap') },
 
       // inline small images
       { test: /\.gif$/,    loader: 'url-loader?limit=10000&mimetype=image/gif' },

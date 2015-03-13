@@ -22,6 +22,7 @@ export default React.createClass({
         'Asia/Dubai',
         'Europe/London',
         'America/Los_Angeles',
+        'Asia/Kolkata',
         'Australia/Sydney',
       ]
     }

@@ -19,7 +19,7 @@ export default React.createClass({
 
   scrollEvent(event): any {
     event.preventDefault();
-    var newTime = moment(this.props.date).add(event.wheelDelta, 'second').toDate();
+    var newTime = moment(this.props.date).add(event.wheelDelta * 6, 'second').toDate();
     Actions.setSelectedTime(newTime);
   },
 
