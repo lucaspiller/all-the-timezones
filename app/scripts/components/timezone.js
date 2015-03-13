@@ -11,7 +11,7 @@ export default React.createClass({
   },
 
   getTime(): string {
-    return moment(this.props.date).tz(this.props.timezone).format('MMMM Do YYYY, h:mm:ss a');
+    return moment(this.props.date).tz(this.props.timezone).format('MMMM Do YYYY, h:mm a');
   },
 
   render(): any {

@@ -1,11 +1,17 @@
 import React from 'react';
 import Timezone from './timezone';
+import SelectedTimeStore from '../stores/selected_time_store'
+import Actions from '../actions/actions'
+
+function getState() {
+  return {
+    date: SelectedTimeStore.getTime()
+  }
+}
 
 export default React.createClass({
   getInitialState(): any {
-    return {
-      date: new Date()
-    }
+    return getState()
   },
 
   getDefaultProps(): any {
@@ -19,16 +25,16 @@ export default React.createClass({
     }
   },
 
-  componentDidMount(): void {
-    this.timer = setInterval(this.tick, 250);
+  componentDidMount: function() {
+    SelectedTimeStore.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount(): void {
-    clearInterval(this.timer);
+  componentWillUnmount: function() {
+    SelectedTimeStore.removeChangeListener(this._onChange);
   },
 
-  tick(): void {
-    this.setState({ date: new Date() });
+  _onChange: function() {
+    this.setState(getState());
   },
 
   render(): any {
