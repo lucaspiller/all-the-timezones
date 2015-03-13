@@ -1,5 +1,6 @@
 import React from 'react';
 import Timezone from './timezone';
+import TimeSelector from './time_selector';
 import SelectedTimeStore from '../stores/selected_time_store'
 import Actions from '../actions/actions'
 
@@ -40,6 +41,7 @@ export default React.createClass({
   render(): any {
     var _this = this;
     return <div>
+      <TimeSelector date={_this.state.date} />
       {this.props.timezones.map(function(result) {
         return <Timezone key={result} timezone={result} date={_this.state.date} />
       })}
