@@ -2,7 +2,6 @@ import React  from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 
-// TODO lots of this should be in a decorator or such
 export default React.createClass({
   getDefaultProps(): any {
     return {
