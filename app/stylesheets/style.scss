@@ -17,4 +17,21 @@ body {
       margin-left: 1ch;
     }
   }
+
+  .hour-list {
+    overflow: hidden;
+    height: 40px;
+
+    .hour {
+      border-radius: 3px;
+      width: 54px;
+      height: 40px;
+      margin: 0 3px;
+      display: inline-block;
+      background-color: #72878A;
+
+      text-align: center;
+    }
+
+  }
 }

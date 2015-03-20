@@ -1,6 +1,7 @@
 import React  from 'react';
 import moment from 'moment';
 import 'moment-timezone';
+import HourList from './hour_list';
 
 export default React.createClass({
   getDefaultProps(): any {
@@ -26,8 +27,12 @@ export default React.createClass({
     return `${abbr} UTC${offset_hours}`;
   },
 
-  getTime(): string {
-    return moment(this.props.date).tz(this.props.timezone).format('MMMM Do YYYY, h:mm a');
+  getLocalTime(): any {
+    return moment(this.props.date).tz(this.props.timezone);
+  },
+
+  getFormattedTime(): string {
+    return this.getLocalTime().format('MMMM Do YYYY, h:mm a');
   },
 
   render(): any {
@@ -37,7 +42,9 @@ export default React.createClass({
         <small>{this.getZoneInfo()}</small>
       </h2>
 
-      <span>{this.getTime()}</span>
+      <span>{this.getFormattedTime()}</span>
+
+      <HourList time={this.getLocalTime()} />
     </div>;
   }
 });
