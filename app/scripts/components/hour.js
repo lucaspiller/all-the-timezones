@@ -8,13 +8,25 @@ export default React.createClass({
     }
   },
 
-  getFormattedTime(): string {
-    return this.props.time.format('h');
+  getClassName(): string {
+    var hour = this.props.time.format('H'); // 24 hour
+    return "hour hour-" + hour;
+  },
+
+  getFormattedHour(): string {
+    return this.props.time.format('h'); // 12 hour
+  },
+
+  getFormattedAbbr(): string {
+    return this.props.time.format('a'); // am / pm
   },
 
   render(): any {
-    return <div className="hour">
-      {this.getFormattedTime()}
+    return <div className={this.getClassName()}>
+      {this.getFormattedHour()}
+      <small>
+        {this.getFormattedAbbr()}
+      </small>
     </div>;
   }
 });
