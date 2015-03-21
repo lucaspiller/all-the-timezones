@@ -2,14 +2,21 @@ import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
 import assign from 'react/lib/Object.assign';
+import * as LocationHash from '../lib/location_hash'
 
-var selectedTime = new Date();
+var selectedTime = LocationHash.loadTime();
 
 var CHANGE_EVENT = Symbol();
 
 var Store = assign({}, EventEmitter.prototype, {
   getTime(): any {
     return selectedTime;
+  },
+
+  setTime(time): any {
+    selectedTime = time;
+    LocationHash.saveTime(selectedTime);
+    this.emitChange();
   },
 
   emitChange(): void {
@@ -28,8 +35,7 @@ var Store = assign({}, EventEmitter.prototype, {
 Dispatcher.register(action => {
   switch(action.actionType) {
     case Constants.SELECTED_TIME_CHANGE:
-      selectedTime = action.time;
-      Store.emitChange();
+      Store.setTime(action.time);
       break;
 
     default:
