@@ -12,12 +12,13 @@ export default React.createClass({
   },
 
   calculateWidths(): any {
-    var minuteOffset    = 60 - this.props.time.minute();
-    this.marginLeft     = -this.HOUR_WIDTH + minuteOffset;
-    this.width          = window.innerWidth + (this.HOUR_WIDTH * 2);
+    let minuteOffset      = (this.HOUR_WIDTH / 60) * this.props.time.minute();
+    let midPoint          = Math.floor(window.innerWidth / 2);
 
-    this.hoursToDisplay = Math.ceil(this.width / this.HOUR_WIDTH);
+    this.width            = window.innerWidth + (this.HOUR_WIDTH * 2);
+    this.hoursToDisplay   = Math.ceil(this.width / this.HOUR_WIDTH);
     this.hoursBeforeAfter = Math.ceil((this.hoursToDisplay - 1) / 2);
+    this.marginLeft = (midPoint - (this.hoursBeforeAfter * this.HOUR_WIDTH)) - minuteOffset;
   },
 
   getStyle(): any {

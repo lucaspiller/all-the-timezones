@@ -12,8 +12,7 @@ export default React.createClass({
 
   getStyle(): any {
     // TODO refactor into util class as duplicated in HourList
-    let totalWidth     = window.innerWidth + (this.HOUR_WIDTH * 2);
-    let marginLeft     = Math.ceil(totalWidth / 2);
+    let marginLeft     = Math.floor(window.innerWidth / 2);
     let height         = window.innerHeight;
 
     return {
