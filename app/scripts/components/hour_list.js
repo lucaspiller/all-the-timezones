@@ -2,6 +2,8 @@ import React  from 'react';
 import moment from 'moment';
 import Hour   from './hour';
 
+let isMobile = /iphone|ipod|ipad|android|blackberry|opera mini|opera mobi|skyfire|maemo|windows phone|palm|iemobile|symbian|symbianos|fennec/i.test(navigator.userAgent.toLowerCase());
+
 export default React.createClass({
   HOUR_WIDTH: 60,
 
@@ -9,6 +11,22 @@ export default React.createClass({
     return {
       time: moment()
     }
+  },
+
+  shouldComponentUpdate(nextProps, nextState): boolean {
+    // If on mobile limit updates of the hour-list to 30 fps. This prevents the
+    // hour-list update from blocking the the date/time display update, so the
+    // app can still look like it's responding fast even though not everything
+    // is :D
+    if (isMobile) {
+      return (this.lastUpdate == undefined) || ((new Date() - this.lastUpdate > (1000 / 30)));
+    } else {
+      return true;
+    }
+  },
+
+  componentDidUpdate(): void {
+    this.lastUpdate = new Date();
   },
 
   calculateWidths(): any {

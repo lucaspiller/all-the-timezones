@@ -9,6 +9,10 @@ export default React.createClass({
     }
   },
 
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return (this.props.active != nextProps.active);
+  },
+
   getClassName(): string {
     let hour = this.props.time.format('H'); // 24 hour
     let klass = "hour hour-" + hour;
