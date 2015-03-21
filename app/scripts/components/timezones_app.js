@@ -28,13 +28,14 @@ export default React.createClass({
       ]
     }
   },
-
   componentDidMount: function() {
     SelectedTimeStore.addChangeListener(this._onChange);
+    window.addEventListener("resize", this._onChange);
   },
 
   componentWillUnmount: function() {
     SelectedTimeStore.removeChangeListener(this._onChange);
+    window.removeEventListener("resize", this._onChange);
   },
 
   _onChange: function() {
