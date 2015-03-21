@@ -43,7 +43,8 @@ export default React.createClass({
 
       return {
         time:   time,
-        key:    time.day() + "-" + time.hour()
+        key:    time.day() + "-" + time.hour(),
+        active: time.isSame(this.props.time)
       }
     });
   },
@@ -52,7 +53,7 @@ export default React.createClass({
     return <div className="hour-list" style={this.getStyle()}>
       <div className="hour-list-inner" style={this.getInnerStyle()}>
         {this.getHours().map(function(result) {
-          return <Hour time={result.time} key={result.key} />;
+          return <Hour time={result.time} key={result.key} active={result.active} />;
         })}
       </div>
     </div>;

@@ -4,13 +4,20 @@ import moment from 'moment';
 export default React.createClass({
   getDefaultProps(): any {
     return {
-      time: moment()
+      time:   moment(),
+      active: false
     }
   },
 
   getClassName(): string {
     let hour = this.props.time.format('H'); // 24 hour
-    return "hour hour-" + hour;
+    let klass = "hour hour-" + hour;
+
+    if (this.props.active) {
+      klass += " hour-active";
+    }
+
+    return klass;
   },
 
   getFormattedHour(): string {
