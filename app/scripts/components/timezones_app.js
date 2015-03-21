@@ -1,7 +1,8 @@
 import React from 'react';
 import Timezone from './timezone';
-import WheelController from './wheel_controller';
 import ButtonController from './button_controller';
+import WheelController from './wheel_controller';
+import TouchController from './touch_controller';
 import SelectedTimeBar from './selected_time_bar'
 import SelectedTimeStore from '../stores/selected_time_store'
 import Actions from '../actions/actions'
@@ -47,6 +48,7 @@ export default React.createClass({
     return <div className="timezones-app">
       <ButtonController date={_this.state.date} />
       <WheelController date={_this.state.date} />
+      <TouchController date={_this.state.date} />
 
       <SelectedTimeBar date={_this.state.data} />
 
