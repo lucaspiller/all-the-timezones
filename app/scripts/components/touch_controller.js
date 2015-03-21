@@ -20,19 +20,19 @@ export default React.createClass({
   },
 
   touchStart(event): any {
+    event.preventDefault();
     this.lastX = event.touches[0].pageX;
   },
 
   touchMove(event): any {
+    event.preventDefault();
     let delta = this.lastX - event.touches[0].pageX;
     this.lastX = event.touches[0].pageX;
 
-    let key = 'second';
-    if (delta > 3)  { key = 'minute'; }
-    if (delta > 10) { key = 'hour'; }
-
-    let newTime = moment(this.props.date).add(delta, key).toDate();
-    Actions.setSelectedTime(newTime);
+    setTimeout(() => {
+      let newTime = moment(this.props.date).add(delta, 'minute').toDate();
+      Actions.setSelectedTime(newTime);
+    }, 0);
   },
 
   render(): any {

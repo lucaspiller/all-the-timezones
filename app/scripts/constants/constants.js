@@ -1,4 +1,4 @@
 export default {
-  CHANGE_EVENT:         Symbol(),
-  SELECTED_TIME_CHANGE: Symbol()
+  CHANGE_EVENT:         'CHANGE_EVENT',
+  SELECTED_TIME_CHANGE: 'SELECTED_TIME_CHANGE'
 }

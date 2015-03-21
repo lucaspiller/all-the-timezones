@@ -6,8 +6,6 @@ import * as LocationHash from '../lib/location_hash'
 
 var selectedTime = LocationHash.loadTime();
 
-var CHANGE_EVENT = Symbol();
-
 var Store = assign({}, EventEmitter.prototype, {
   getTime(): any {
     return selectedTime;
@@ -20,15 +18,15 @@ var Store = assign({}, EventEmitter.prototype, {
   },
 
   emitChange(): void {
-    this.emit(CHANGE_EVENT);
+    this.emit(Constants.CHANGE_EVENT);
   },
 
   addChangeListener(callback): void {
-    this.addListener(CHANGE_EVENT, callback);
+    this.addListener(Constants.CHANGE_EVENT, callback);
   },
 
   removeChangeListener(callback): void {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.removeListener(Constants.CHANGE_EVENT, callback);
   }
 });
 
