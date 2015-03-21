@@ -2,6 +2,7 @@ import React from 'react';
 import Timezone from './timezone';
 import WheelController from './wheel_controller';
 import ButtonController from './button_controller';
+import SelectedTimeBar from './selected_time_bar'
 import SelectedTimeStore from '../stores/selected_time_store'
 import Actions from '../actions/actions'
 
@@ -42,9 +43,12 @@ export default React.createClass({
 
   render(): any {
     var _this = this;
-    return <div>
+    return <div className="timezones-app">
       <ButtonController date={_this.state.date} />
       <WheelController date={_this.state.date} />
+
+      <SelectedTimeBar date={_this.state.data} />
+
       {this.props.timezones.map(function(result) {
         return <Timezone key={result} timezone={result} date={_this.state.date} />
       })}

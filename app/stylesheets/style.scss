@@ -5,78 +5,92 @@ body {
   text-rendering: auto !important;
 }
 
-.timezone {
-  margin-bottom: 10px;
-  border-top: 30px solid #353535;
+.timezones-app {
+  position: relative;
+  overflow: hidden;
 
-  h2 {
-    margin-top: -20px;
-    margin-bottom: 15px;
-    small {
-      font-size: 0.5em;
-      margin-left: 1ch;
+  .timezone {
+    margin-bottom: 10px;
+    border-top: 30px solid #353535;
+
+    h2 {
+      margin-top: -20px;
+      margin-bottom: 15px;
+      small {
+        font-size: 0.5em;
+        margin-left: 1ch;
+      }
+    }
+
+    .hour-list {
+      height: 40px;
+      margin-top: 10px;
+
+      .hour {
+        border-radius: 3px;
+        width: 54px;
+        height: 40px;
+        margin: 0 3px;
+        display: inline-block;
+        text-align: center;
+
+        &.hour-0,
+        &.hour-1,
+        &.hour-2,
+        &.hour-3,
+        &.hour-4,
+        &.hour-5,
+        &.hour-22,
+        &.hour-23,
+        {
+          background-color: darken(#72878A, 40%);
+        }
+
+        &.hour-6,
+        &.hour-7,
+        &.hour-8,
+        &.hour-18,
+        &.hour-19,
+        &.hour-20,
+        &.hour-21,
+        {
+          background-color: darken(#72878A, 20%);
+        }
+
+        &.hour-9,
+        &.hour-10,
+        &.hour-11,
+        &.hour-12,
+        &.hour-13,
+        &.hour-14,
+        &.hour-15,
+        &.hour-16,
+        &.hour-17
+        {
+          background-color: #72878A;
+        }
+
+        span {
+          display: block;
+          margin-top: 3px;
+        }
+
+        small {
+          display: block;
+          font-size: 0.5em;
+        }
+      }
     }
   }
 
-  .hour-list {
-    overflow: hidden;
-    height: 40px;
-    margin-top: 10px;
+  .selected-time-bar {
+    position: absolute;
+    top: 0;
 
-    .hour {
-      border-radius: 3px;
-      width: 54px;
-      height: 40px;
-      margin: 0 3px;
-      display: inline-block;
-      text-align: center;
-
-      &.hour-0,
-      &.hour-1,
-      &.hour-2,
-      &.hour-3,
-      &.hour-4,
-      &.hour-5,
-      &.hour-22,
-      &.hour-23,
-      {
-        background-color: darken(#72878A, 40%);
-      }
-
-      &.hour-6,
-      &.hour-7,
-      &.hour-8,
-      &.hour-18,
-      &.hour-19,
-      &.hour-20,
-      &.hour-21,
-      {
-        background-color: darken(#72878A, 20%);
-      }
-
-      &.hour-9,
-      &.hour-10,
-      &.hour-11,
-      &.hour-12,
-      &.hour-13,
-      &.hour-14,
-      &.hour-15,
-      &.hour-16,
-      &.hour-17
-      {
-        background-color: #72878A;
-      }
-
-      span {
-        display: block;
-        margin-top: 3px;
-      }
-
-      small {
-        display: block;
-        font-size: 0.5em;
-      }
+    .bar {
+      width: 1px;
+      height: 100%;
+      background-color: lighten(#72878A, 20%);
     }
-
   }
 }

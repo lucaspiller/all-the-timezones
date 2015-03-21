@@ -9,7 +9,7 @@ export default React.createClass({
   },
 
   getClassName(): string {
-    var hour = this.props.time.format('H'); // 24 hour
+    let hour = this.props.time.format('H'); // 24 hour
     return "hour hour-" + hour;
   },
 
