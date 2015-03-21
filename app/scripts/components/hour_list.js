@@ -18,7 +18,7 @@ export default React.createClass({
     this.width            = window.innerWidth + (this.HOUR_WIDTH * 2);
     this.hoursToDisplay   = Math.ceil(this.width / this.HOUR_WIDTH);
     this.hoursBeforeAfter = Math.ceil((this.hoursToDisplay - 1) / 2);
-    this.marginLeft = (midPoint - (this.hoursBeforeAfter * this.HOUR_WIDTH)) - minuteOffset;
+    this.offsetLeft = (midPoint - (this.hoursBeforeAfter * this.HOUR_WIDTH)) - minuteOffset;
   },
 
   getStyle(): any {
@@ -31,7 +31,9 @@ export default React.createClass({
   getInnerStyle(): any {
     this.calculateWidths();
     return {
-      marginLeft: this.marginLeft + "px",
+      '-webkit-transform': 'translateX(' + this.offsetLeft + 'px)',
+      '-ms-transform': 'translateX(' + this.offsetLeft + 'px)',
+      'transform': 'translateX(' + this.offsetLeft + 'px)'
     };
   },
 
