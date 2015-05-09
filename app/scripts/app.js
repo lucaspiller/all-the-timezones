@@ -1,5 +1,6 @@
 'use strict';
 
+import "bootstrap/less/bootstrap.less";
 import "../stylesheets/style.scss";
 
 import React        from 'react';
