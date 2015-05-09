@@ -5,8 +5,8 @@ var DEBUG             = true; // TODO
 
 module.exports = {
   output: {
-    path:          path.join(__dirname, "../dist/"),
-    publicPath:    "assets/",
+    path:          path.join(__dirname, "../build/"),
+    publicPath:    "/assets/",
     filename:      "bundle.js",
   },
 
