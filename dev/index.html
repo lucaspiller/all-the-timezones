@@ -2,12 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   </head>
   <body>
-    <script src="http://localhost:8080/webpack-dev-server.js"></script>
-    <script src="/assets/bundle.js"></script>
+    <script type="text/javascript">
+      //window.onerror = function (errorMsg, url, lineNumber) {
+      //  alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+      //}
+    </script>
+    <!--<script src="http://localhost:8080/webpack-dev-server.js"></script>-->
+    <!--<script type="text/javascript" src="/assets/bundle.js"></script>-->
+    <script type="text/javascript">
+      var script = document.createElement("script");
+      script.src = "/assets/bundle.js?" + (new Date().getTime());
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>
