@@ -1,11 +1,13 @@
 import React from 'react';
 import Settings from './settings';
+import Timezones from './settings_timezones';
 import SettingsStore from '../stores/settings_store'
 import Actions from '../actions/actions'
 
 function getState() {
   return {
-    isOpen: SettingsStore.getOpenState()
+    isOpen:    SettingsStore.getOpenState(),
+    timezones: SettingsStore.getTimezones()
   }
 }
 
@@ -46,7 +48,7 @@ export default React.createClass({
             <h4 className="modal-title">Settings</h4>
           </div>
           <div className="modal-body">
-           /* TODO settings body */
+            <Timezones timezones={_this.state.timezones} />
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-primary" onClick={this.hideSettings}>Done</button>

@@ -21,5 +21,12 @@ export default {
       actionType: Constants.CHANGE_SETTINGS_OPEN_STATE,
       open:       false
     })
+  },
+
+  removeTimezone: function(timezone) {
+    Dispatcher.dispatch({
+      actionType: Constants.REMOVE_TIMEZONE,
+      timezone:   timezone
+    });
   }
 }
