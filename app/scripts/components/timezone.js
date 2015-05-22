@@ -32,7 +32,7 @@ export default React.createClass({
   },
 
   getFormattedTime(): string {
-    return this.getLocalTime().format('MMMM Do YYYY, h:mm a');
+    return this.getLocalTime().format('dddd, MMMM Do YYYY, h:mm a');
   },
 
   render(): any {
