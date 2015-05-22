@@ -2,16 +2,18 @@ import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
 import assign from 'react/lib/Object.assign';
+import Array from 'core-js/es6/array'
+import Set from 'core-js/es6/set'
 
 let settingsIsOpen = false;
 
-let timezones = [
+let timezones = new Set([
   'Asia/Dubai',
   'Europe/London',
   'America/Los_Angeles',
   'Asia/Kolkata',
   'Australia/Sydney',
-];
+]);
 
 var Store = assign({}, EventEmitter.prototype, {
   getOpenState(): boolean {
@@ -19,7 +21,7 @@ var Store = assign({}, EventEmitter.prototype, {
   },
 
   getTimezones(): any {
-    return timezones;
+    return Array.from(timezones);
   },
 
   setOpenState(isOpen): void {
@@ -27,12 +29,13 @@ var Store = assign({}, EventEmitter.prototype, {
     this.emitChange();
   },
 
-  removeTimezone(timezone): void {
-    var index = timezones.indexOf(timezone);
-    if (index >= 0) {
-      timezones.splice(index, 1);
-    }
+  addTimezone(timezone): void {
+    timezones.add(timezone);
+    this.emitChange();
+  },
 
+  removeTimezone(timezone): void {
+    timezones.delete(timezone);
     this.emitChange();
   },
 
@@ -57,6 +60,10 @@ Dispatcher.register(action => {
 
     case Constants.REMOVE_TIMEZONE:
       Store.removeTimezone(action.timezone);
+      break;
+
+    case Constants.ADD_TIMEZONE:
+      Store.addTimezone(action.timezone);
       break;
 
     default:

@@ -23,6 +23,13 @@ export default {
     })
   },
 
+  addTimezone: function(timezone) {
+    Dispatcher.dispatch({
+      actionType: Constants.ADD_TIMEZONE,
+      timezone:   timezone
+    });
+  },
+
   removeTimezone: function(timezone) {
     Dispatcher.dispatch({
       actionType: Constants.REMOVE_TIMEZONE,

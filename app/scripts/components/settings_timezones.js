@@ -1,5 +1,6 @@
 import React from 'react';
 import Timezone from './settings_timezone';
+import NewTimezone from './settings_new_timezone';
 
 export default React.createClass({
   render(): any {
@@ -11,6 +12,7 @@ export default React.createClass({
           return <Timezone key={result} timezone={result} />
         })}
       </ul>
+      <NewTimezone activeTimezones={this.props.timezones} />
     </div>
   }
 });
