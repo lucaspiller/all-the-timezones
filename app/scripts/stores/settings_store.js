@@ -1,9 +1,11 @@
+import moment from 'moment';
+import 'moment-timezone';
+import Array from 'core-js/es6/array'
+import Set from 'core-js/es6/set'
 import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
 import assign from 'react/lib/Object.assign';
-import Array from 'core-js/es6/array'
-import Set from 'core-js/es6/set'
 
 let settingsIsOpen = false;
 
@@ -21,7 +23,11 @@ var Store = assign({}, EventEmitter.prototype, {
   },
 
   getTimezones(): any {
-    return Array.from(timezones);
+    return Array.from(timezones).sort((a, b) => {
+      let aOffset = moment.tz.zone(a).offset(moment());
+      let bOffset = moment.tz.zone(b).offset(moment());
+      return bOffset - aOffset
+    });
   },
 
   setOpenState(isOpen): void {
