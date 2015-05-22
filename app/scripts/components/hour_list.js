@@ -5,7 +5,7 @@ import Hour   from './hour';
 let isMobile = /iphone|ipod|ipad|android|blackberry|opera mini|opera mobi|skyfire|maemo|windows phone|palm|iemobile|symbian|symbianos|fennec/i.test(navigator.userAgent.toLowerCase());
 
 export default React.createClass({
-  HOUR_WIDTH: 60,
+  HOUR_WIDTH: 56,
 
   getDefaultProps(): any {
     return {
