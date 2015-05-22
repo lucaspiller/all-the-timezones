@@ -19,6 +19,10 @@ export default React.createClass({
     Actions.setSelectedTime(newTime);
   },
 
+  now(event): void {
+    Actions.setSelectedTime(moment());
+  },
+
   showSettings(event): void {
     Actions.showSettings();
   },
@@ -27,6 +31,7 @@ export default React.createClass({
     return <div>
       <button onClick={this.decrHour} className="btn btn-default">-1 hr</button>
       <button onClick={this.incrHour} className="btn btn-default">+1 hr</button>
+      <button onClick={this.now} className="btn btn-default">Now</button>
       <button onClick={this.showSettings} className="btn btn-default">
         <span className="glyphicon glyphicon-cog"></span>
       </button>
