@@ -6,8 +6,8 @@ export default React.createClass({
   render(): any {
     var _this = this;
     return <div>
-      <h2>Timezones</h2>
-      <ul>
+      <h3>Timezones</h3>
+      <ul className="list-group">
         {this.props.timezones.map(function(result) {
           return <Timezone key={result} timezone={result} />
         })}

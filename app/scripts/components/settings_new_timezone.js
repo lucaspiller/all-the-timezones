@@ -39,15 +39,15 @@ export default React.createClass({
   render(): any {
     var _this = this;
     return <div>
-      <h3>Add Timezone</h3>
-        <select value={this.state.timezone} onChange={this.updateSelectedValue}>
+      <h4>Add Timezone</h4>
+        <select value={this.state.timezone} onChange={this.updateSelectedValue} className="form-control">
         {this.selectableTimezones().map(function(result) {
           return <option key={result}>
             {result}
           </option>
         })}
         </select>
-        <button onClick={this.addTimezone}>
+        <button onClick={this.addTimezone} className="btn btn-default">
           Add
         </button>
     </div>

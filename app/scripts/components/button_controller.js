@@ -25,9 +25,11 @@ export default React.createClass({
 
   render(): any {
     return <div>
-      <button onClick={this.decrHour}>-1 hr</button>
-      <button onClick={this.incrHour}>+1 hr</button>
-      <button onClick={this.showSettings}>Settings</button>
+      <button onClick={this.decrHour} className="btn btn-default">-1 hr</button>
+      <button onClick={this.incrHour} className="btn btn-default">+1 hr</button>
+      <button onClick={this.showSettings} className="btn btn-default">
+        <span className="glyphicon glyphicon-cog"></span>
+      </button>
     </div>;
   }
 });
