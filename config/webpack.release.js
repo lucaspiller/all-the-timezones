@@ -1,22 +1,21 @@
 var path              = require("path");
 var webpack           = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var DEBUG             = true; // TODO
 
 module.exports = {
   output: {
-    path:          path.join(__dirname, "../build/"),
-    publicPath:    "/assets/",
+    path:          path.join(__dirname, "../build/release/"),
+    publicPath:    "",
     filename:      "bundle.js",
   },
 
-  cache:   DEBUG,
-  debug:   DEBUG,
-  devtool: DEBUG ? 'inline-source-map' : false,
+  cache:   false,
+  debug:   false,
+  devtool: false,
 
   stats: {
     colors:  true,
-    reasons: DEBUG
+    reasons: true
   },
 
   entry: {
