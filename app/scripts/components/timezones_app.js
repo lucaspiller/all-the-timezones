@@ -4,6 +4,7 @@ import ButtonController from './button_controller';
 import WheelController from './wheel_controller';
 import TouchController from './touch_controller';
 import SelectedTimeBar from './selected_time_bar'
+import Settings from './settings';
 import SelectedTimeStore from '../stores/selected_time_store'
 import Actions from '../actions/actions'
 
@@ -29,6 +30,7 @@ export default React.createClass({
       ]
     }
   },
+
   componentDidMount: function() {
     SelectedTimeStore.addChangeListener(this._onChange);
     window.addEventListener("resize", this._onChange);
@@ -55,6 +57,8 @@ export default React.createClass({
       {this.props.timezones.map(function(result) {
         return <Timezone key={result} timezone={result} date={_this.state.date} />
       })}
+
+      <Settings />
     </div>
   }
 });

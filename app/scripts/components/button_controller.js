@@ -19,10 +19,15 @@ export default React.createClass({
     Actions.setSelectedTime(newTime);
   },
 
+  showSettings(event): void {
+    Actions.showSettings();
+  },
+
   render(): any {
     return <div>
       <button onClick={this.decrHour}>-1 hr</button>
       <button onClick={this.incrHour}>+1 hr</button>
+      <button onClick={this.showSettings}>Settings</button>
     </div>;
   }
 });

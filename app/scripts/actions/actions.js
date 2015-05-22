@@ -7,5 +7,19 @@ export default {
       actionType: Constants.SELECTED_TIME_CHANGE,
       time:       time
     });
+  },
+
+  showSettings: function() {
+    Dispatcher.dispatch({
+      actionType: Constants.CHANGE_SETTINGS_OPEN_STATE,
+      open:       true
+    })
+  },
+
+  hideSettings: function() {
+    Dispatcher.dispatch({
+      actionType: Constants.CHANGE_SETTINGS_OPEN_STATE,
+      open:       false
+    })
   }
 }
