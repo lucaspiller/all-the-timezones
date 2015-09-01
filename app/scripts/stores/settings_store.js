@@ -6,18 +6,35 @@ import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
 import assign from 'react/lib/Object.assign';
+import * as storage from '../lib/localstorage';
 
 let settingsIsOpen = false;
+let timezones      = null;
 
-let timezones = new Set([
-  'America/Los_Angeles',
-  'America/New_York',
-  'Europe/London',
-  'Asia/Dubai',
-  'Asia/Kolkata',
-  'Asia/Shanghai',
-  'Australia/Sydney',
-]);
+function loadTimezones() {
+  // load timezones from local storage
+  timezones = storage.getObject('timezones');
+
+  if (timezones === null || (timezones.hasOwnProperty('length') && timezones.length == 0)) {
+    // set defaults
+    timezones = new Set([
+      'America/Los_Angeles',
+      'America/New_York',
+      'Europe/London',
+      'Asia/Dubai',
+      'Asia/Kolkata',
+      'Asia/Shanghai',
+      'Australia/Sydney',
+    ]);
+  } else {
+    // convert array to set
+    timezones = new Set(timezones);
+  }
+}
+
+function saveTimezones() {
+  storage.setObject('timezones', Array.from(timezones));
+}
 
 var Store = assign({}, EventEmitter.prototype, {
   getOpenState(): boolean {
@@ -25,6 +42,10 @@ var Store = assign({}, EventEmitter.prototype, {
   },
 
   getTimezones(): any {
+    if (timezones == null) {
+      loadTimezones();
+    }
+
     return Array.from(timezones).sort((a, b) => {
       let aOffset = moment.tz.zone(a).offset(moment());
       let bOffset = moment.tz.zone(b).offset(moment());
@@ -39,11 +60,13 @@ var Store = assign({}, EventEmitter.prototype, {
 
   addTimezone(timezone): void {
     timezones.add(timezone);
+    saveTimezones();
     this.emitChange();
   },
 
   removeTimezone(timezone): void {
     timezones.delete(timezone);
+    saveTimezones();
     this.emitChange();
   },
 
