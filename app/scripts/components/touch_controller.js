@@ -20,12 +20,12 @@ export default React.createClass({
   },
 
   touchStart(event): any {
-    event.preventDefault();
+    //event.preventDefault();
     this.lastX = event.touches[0].pageX;
   },
 
   touchMove(event): any {
-    event.preventDefault();
+    //event.preventDefault();
     let delta = this.lastX - event.touches[0].pageX;
     this.lastX = event.touches[0].pageX;
 

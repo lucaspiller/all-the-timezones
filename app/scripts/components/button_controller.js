@@ -28,7 +28,7 @@ export default React.createClass({
   },
 
   render(): any {
-    return <div>
+    return <div className="buttons">
       <button onClick={this.decrHour} className="btn btn-default">-1 hr</button>
       <button onClick={this.incrHour} className="btn btn-default">+1 hr</button>
       <button onClick={this.now} className="btn btn-default">Now</button>

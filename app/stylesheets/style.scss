@@ -9,6 +9,23 @@ body {
   overflow: hidden;
   color: #fff;
 
+  .buttons {
+    z-index: 999;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    @media (max-width: 600px) {
+      right: 5px;
+      bottom: 5px;
+
+      .btn {
+        font-size: 8px;
+        padding: 3px 6px;
+      }
+    }
+  }
+
   .timezone {
     margin-bottom: 10px;
     border-top: 30px solid #353535;
