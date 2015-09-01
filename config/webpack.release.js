@@ -24,7 +24,15 @@ module.exports = {
 
   plugins: [
     // extract inline css into separate 'style.css'
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    })
   ],
 
   module: {
