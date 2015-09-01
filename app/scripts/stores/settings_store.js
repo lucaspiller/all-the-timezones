@@ -10,10 +10,12 @@ import assign from 'react/lib/Object.assign';
 let settingsIsOpen = false;
 
 let timezones = new Set([
-  'Asia/Dubai',
-  'Europe/London',
   'America/Los_Angeles',
+  'America/New_York',
+  'Europe/London',
+  'Asia/Dubai',
   'Asia/Kolkata',
+  'Asia/Shanghai',
   'Australia/Sydney',
 ]);
 
