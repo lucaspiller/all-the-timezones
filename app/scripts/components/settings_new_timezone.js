@@ -4,6 +4,7 @@ import 'moment-timezone';
 import Actions from '../actions/actions'
 import Array from 'core-js/es6/array'
 import Set from 'core-js/es6/set'
+import * as TimezoneUtils from '../lib/timezone_utils';
 
 export default React.createClass({
   getInitialState(): any {
@@ -33,7 +34,16 @@ export default React.createClass({
       timezones.delete(t);
     });
 
-    return Array.from(timezones);
+    return Array.from(timezones).sort(function(a, b) {
+      let offsetA = moment.tz.zone(a).offset(new Date());
+      let offsetB = moment.tz.zone(b).offset(new Date());
+
+      return offsetA - offsetB;
+    });
+  },
+
+  getName(timezone): string {
+    return TimezoneUtils.formatNameWithZoneInfo(timezone);
   },
 
   render(): any {
@@ -43,7 +53,7 @@ export default React.createClass({
         <select value={this.state.timezone} onChange={this.updateSelectedValue} className="form-control">
         {this.selectableTimezones().map(function(result) {
           return <option key={result}>
-            {result}
+            {_this.getName(result)}
           </option>
         })}
         </select>

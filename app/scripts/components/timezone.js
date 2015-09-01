@@ -2,6 +2,7 @@ import React  from 'react';
 import moment from 'moment';
 import 'moment-timezone';
 import HourList from './hour_list';
+import * as TimezoneUtils from '../lib/timezone_utils';
 
 export default React.createClass({
   getDefaultProps(): any {
@@ -12,19 +13,11 @@ export default React.createClass({
   },
 
   getName(): string {
-    return this.props.timezone.split('/')[1].replace('_', ' ');
+    return TimezoneUtils.formatName(this.props.timezone);
   },
 
   getZoneInfo(): string {
-    let zone         = moment.tz.zone(this.props.timezone);
-    let offset_hours = zone.offset(this.props.date) / 60;
-    let abbr         = zone.abbr(this.props.date);
-
-    if (offset_hours >= 0) {
-      offset_hours = `+${offset_hours}`;
-    }
-
-    return `${abbr} UTC${offset_hours}`;
+    return TimezoneUtils.formatZoneInfo(this.props.timezone, this.props.date);
   },
 
   getLocalTime(): any {
