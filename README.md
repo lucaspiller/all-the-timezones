@@ -1,3 +1,9 @@
 # All The Timezones
 
-Copyright © Luca Spiller 2015.
+http://www.allthetimzones.com/
+
+Simple timezone tool built in React.
+
+## License
+
+MIT
