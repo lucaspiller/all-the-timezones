@@ -49,9 +49,9 @@ export default React.createClass({
   getInnerStyle(): any {
     this.calculateWidths();
     return {
-      '-webkit-transform': 'translateX(' + this.offsetLeft + 'px)',
-      '-ms-transform': 'translateX(' + this.offsetLeft + 'px)',
-      'transform': 'translateX(' + this.offsetLeft + 'px)'
+      WebkitTransform: 'translateX(' + this.offsetLeft + 'px)',
+      MsTransform: 'translateX(' + this.offsetLeft + 'px)',
+      transform: 'translateX(' + this.offsetLeft + 'px)'
     };
   },
 

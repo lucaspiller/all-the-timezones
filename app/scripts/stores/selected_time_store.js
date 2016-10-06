@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
-import assign from 'react/lib/Object.assign';
+import assign from 'object-assign';
 import * as LocationHash from '../lib/location_hash'
 
 var selectedTime = LocationHash.loadTime();

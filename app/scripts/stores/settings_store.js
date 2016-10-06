@@ -5,7 +5,7 @@ import Set from 'core-js/es6/set'
 import { EventEmitter } from 'events';
 import Dispatcher from '../dispatcher/dispatcher';
 import Constants from '../constants/constants';
-import assign from 'react/lib/Object.assign';
+import assign from 'object-assign';
 import * as storage from '../lib/localstorage';
 
 let settingsIsOpen = false;
