@@ -1,8 +1,8 @@
 # All The Timezones
 
-http://www.allthetimzones.com/
+http://www.allthetimezones.com/
 
-Simple timezone tool built in React.
+Timezone tool written in React.
 
 ## Development
 
